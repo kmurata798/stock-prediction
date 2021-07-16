@@ -15,10 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.views.generic import TemplateView
+
+from users.views import myView
+from companies.views import companiesView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('/', )
+    # users will visit users.views first
+    path('', TemplateView.as_view(template_name='index.html')),
+    # path('', myView),
+    path('companies/', companiesView),
     # re_path(r'^api/users/$', views.users_list),
     # re_path(r'^api/students/([0-9])$', views.students_detail),
 ]

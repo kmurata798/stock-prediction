@@ -1,3 +1,6 @@
 from django.shortcuts import render
+# import http response function from the http module in the django package
+from django.http import HttpResponse
 
-# Create your views here.
+def myView(request):
+    return HttpResponse('Heres some stocks.')
