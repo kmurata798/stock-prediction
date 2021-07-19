@@ -43,6 +43,10 @@ video {
   .fa-angle-double-right {
     margin-left: 4px;
   }
+
+  .fa-info-circle {
+    margin-left: 4px;
+  }
   
   @media screen and (max-width: 960px) {
     .hero-container > h1 {
