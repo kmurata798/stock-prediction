@@ -34,7 +34,13 @@ db.mongoose
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ Company: "Apple", Rating: "5", name: "AAPL" });
+  res.json([
+    { Company: "Apple", Rating: "5", name: "AAPL" },
+    { Company: "Twitter", Rating: "3", name: "TWTR" },
+    { Company: "Target", Rating: "4", name: "TGT" },
+    { Company: "Amazon", Rating: "4", name: "AMZN" },
+    { Company: "Walt Disney Co", Rating: "5", name: "DIS" }]
+  );
 });
 
 

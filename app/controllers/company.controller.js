@@ -1,5 +1,5 @@
 const db = require("../models");
-const company = db.companies;
+const Company = db.companies;
 
 // Create and Save a new Company
 exports.create = (req, res) => {
