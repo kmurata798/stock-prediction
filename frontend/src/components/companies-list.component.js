@@ -160,7 +160,7 @@ export default class CompaniesList extends Component {
                 {/* access page using /companies/:id */}
               <Link
                 to={"/companies/" + currentCompany.id}
-                className="badge badge-warning"
+                className="badge badge-warning "
               >
                 Edit
               </Link>

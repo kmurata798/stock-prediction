@@ -63,7 +63,7 @@ export default class Company extends Component {
         });
     }
 
-    updatechosen(status) {
+    updateChosen(status) {
         var data = {
             id: this.state.currentCompany.id,
             name: this.state.currentCompany.name,
@@ -156,14 +156,14 @@ export default class Company extends Component {
                         className="badge badge-primary mr-2"
                         onClick={() => this.updateChosen(false)}
                     >
-                        UnPublish
+                        Don't choose
                     </button>
                 ) : (
                     <button
                         className="badge badge-primary mr-2"
                         onClick={() => this.updateChosen(true)}
                     >
-                        Publish
+                        Choose
                     </button>
                 )}
     
