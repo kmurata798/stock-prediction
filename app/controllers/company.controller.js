@@ -16,7 +16,7 @@ exports.create = (req, res) => {
   // Create a Company
   const company = new Company({
     name: req.body.name,
-    shares: req.body.shares,
+    rating: req.body.rating,
     chosen: req.body.chosen ? req.body.chosen : false
   });
 

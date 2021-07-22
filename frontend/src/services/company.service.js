@@ -1,6 +1,7 @@
 import http from "../http-common";
 
 // We create a data service that uses axios object to send HTTP requests.
+// import http-common.js to have access to Axios functionality 
 class CompanyDataService {
   getAll() {
     return http.get("/companies");
@@ -26,8 +27,8 @@ class CompanyDataService {
     return http.delete(`/companies`);
   }
 
-  findByTitle(title) {
-    return http.get(`/companies?title=${title}`);
+  findByName(name) {
+    return http.get(`/companies?name=${name}`);
   }
 }
 

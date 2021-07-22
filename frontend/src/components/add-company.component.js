@@ -4,66 +4,66 @@ import CompanyDataService from "../services/company.service";
 
 export default class AddTutorial extends Component {
     constructor(props) {
-      super(props);
-      this.onChangeName = this.onChangeName.bind(this);
-      this.onChangeRating = this.onChangeDescription.bind(this);
-      this.saveCompany = this.saveCompany.bind(this);
-      this.newCompany = this.newCompany.bind(this);
-  
-      this.state = {
-        id: null,
-        name: "",
-        rating: "", 
-        chosen: false,
-  
-        submitted: false
-      };
+        super(props);
+        this.onChangeName = this.onChangeName.bind(this);
+        this.onChangeRating = this.onChangeDescription.bind(this);
+        this.saveCompany = this.saveCompany.bind(this);
+        this.newCompany = this.newCompany.bind(this);
+    
+        this.state = {
+            id: null,
+            name: "",
+            rating: "", 
+            chosen: false,
+      
+            submitted: false
+        };
     }
   
     onChangeName(e) {
-      this.setState({
-        title: e.target.value
-      });
-    }
-  
-    onChangeRating(e) {
-      this.setState({
-        rating: e.target.value
-      });
-    }
-  
-    saveCompany() {
-      var data = {
-        name: this.state.name,
-        rating: this.state.rating
-      };
-  
-      CompanyDataService.create(data)
-        .then(response => {
-          this.setState({
-            id: response.data.id,
-            name: response.data.name,
-            rating: response.data.rating,
-            chosen: response.data.chosen,
-  
-            submitted: true
-          });
-          console.log(response.data);
-        })
-        .catch(e => {
-          console.log(e);
+        this.setState({
+            title: e.target.value
         });
     }
   
-    newCompany() {
-      this.setState({
-        id: null,
-        name: "",
-        rating: "",
-        chosen: false,
+    onChangeRating(e) {
+        this.setState({
+            rating: e.target.value
+        });
+    }
   
-        submitted: false
-      });
+    saveCompany() {
+        var data = {
+            name: this.state.name,
+            rating: this.state.rating
+        };
+  
+        CompanyDataService.create(data)
+            .then(response => {
+                this.setState({
+                    id: response.data.id,
+                    name: response.data.name,
+                    rating: response.data.rating,
+                    chosen: response.data.chosen,
+          
+                    submitted: true
+                });
+            console.log(response.data);
+            })
+            .catch(e => {
+              console.log(e);
+            });
+    }
+  
+    newCompany() {
+        this.setState({
+            id: null,
+            name: "",
+            rating: "",
+            chosen: false,
+      
+            submitted: false
+        });
     }
   
     render() {
