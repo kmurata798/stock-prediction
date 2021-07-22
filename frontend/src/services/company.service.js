@@ -1,5 +1,6 @@
 import http from "../http-common";
 
+// We create a data service that uses axios object to send HTTP requests.
 class CompanyDataService {
   getAll() {
     return http.get("/companies");
