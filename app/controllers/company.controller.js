@@ -1,19 +1,23 @@
+// Give this file access to the models
 const db = require("../models");
+// Set the 'companies' collection to a variable
 const Company = db.companies;
+
+// exports.{method} or modules.exports.{method} allows other files to access the various functions in this file
 
 // Create and Save a new Company
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.title) {
+  if (!req.body.name) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
   }
 
   // Create a Company
   const company = new Company({
-    title: req.body.title,
-    description: req.body.description,
-    published: req.body.published ? req.body.published : false
+    name: req.body.name,
+    shares: req.body.shares,
+    chosen: req.body.chosen ? req.body.chosen : false
   });
 
   // Save Company in the database
@@ -32,8 +36,8 @@ exports.create = (req, res) => {
 
 // Retrieve all Companys from the database.
 exports.findAll = (req, res) => {
-    const title = req.query.title;
-    var condition = title ? { title: { $regex: new RegExp(title), $options: "i" } } : {};
+    const name = req.query.name;
+    var condition = name ? { name: { $regex: new RegExp(name), $options: "i" } } : {};
   
     Company.find(condition)
       .then(data => {
@@ -128,9 +132,9 @@ exports.deleteAll = (req, res) => {
     });
 };
 
-// Find all published Companys
-exports.findAllPublished = (req, res) => {
-    Company.find({ published: true })
+// Find all chosen Companys
+exports.findAllChosen = (req, res) => {
+    Company.find({ chosen: true })
     .then(data => {
       res.send(data);
     })

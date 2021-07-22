@@ -17,7 +17,9 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
+// Give this file access to the mongo models we created
 const db = require("./app/models");
+// Initialize MongoDB connection
 db.mongoose
   .connect(db.url, {
     useNewUrlParser: true,
@@ -43,6 +45,8 @@ app.get("/", (req, res) => {
   );
 });
 
+// import app/routes from the app model initialized earlier
+require("./app/routes/company.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
