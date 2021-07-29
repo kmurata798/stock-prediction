@@ -40,8 +40,7 @@ app.get("/", (req, res) => {
     { Company: "Apple", Rating: "5", name: "AAPL" },
     { Company: "Twitter", Rating: "3", name: "TWTR" },
     { Company: "Target", Rating: "4", name: "TGT" },
-    { Company: "Amazon", Rating: "4", name: "AMZN" },
-    { Company: "Walt Disney Co", Rating: "5", name: "DIS" }]
+    { Company: "Amazon", Rating: "4", name: "AMZN" }]
   );
 });
 
