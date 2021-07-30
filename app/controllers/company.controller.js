@@ -5,6 +5,7 @@ const Company = db.companies;
 
 // exports.{method} or modules.exports.{method} allows other files to access the various functions in this file
 
+
 // Create and Save a new Company
 exports.create = (req, res) => {
   // Validate request

@@ -3,6 +3,7 @@ module.exports = app => {
     
     var router = require("express").Router();
 
+    
     // Create a new Company
     router.post("/", companies.create);
 

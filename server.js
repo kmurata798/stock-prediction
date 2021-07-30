@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
+const dotenv = require('dotenv');
+dotenv.config()
 
 var corsOptions = {
   origin: "http://localhost:8081"
@@ -46,6 +48,8 @@ app.get("/", (req, res) => {
 
 // import app/routes from the app model initialized earlier
 require("./app/routes/company.routes")(app);
+require("./app/routes/stocks.routes")(app);
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
