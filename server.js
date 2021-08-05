@@ -3,8 +3,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
-const dotenv = require('dotenv');
-dotenv.config()
+require('dotenv').config();
+const axios = require('axios');
 
 var corsOptions = {
   origin: "http://localhost:8081"
@@ -50,8 +50,38 @@ app.get("/", (req, res) => {
 require("./app/routes/company.routes")(app);
 require("./app/routes/stocks.routes")(app);
 
+// async function getStockData() {
+//   const apiKey = process.env.ALPHAVANTAGE_API_KEY
+//   const baseUrl = 'https://www.alphavantage.co/query'
+//   const functionType = 'TIME_SERIES_DAILY'
+//   const outputsize = 'compact'
+//   const symbol = 'MSFT'
 
-// set port, listen for requests
+//   try {
+//     const response = await axios.get(baseUrl, {
+//       params: {
+//         function: functionType,
+//         symbol: symbol,
+//         outputsize: outputsize,
+//         apikey: apiKey,
+//         datatype: 'json'
+//       }
+//     })
+
+//     return response.data
+//   } catch (err) {
+//     console.log(err)
+//   }
+// }
+
+// // http://localhost:3000/stonks
+// app.get('/stonks', async (req, res) => {
+//   const stonks = await getStockData()
+//   console.log(stonks)
+//   res.send(stonks)
+// });
+
+// set port, listen for requests (Use environment variable or default 8080 port)
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
