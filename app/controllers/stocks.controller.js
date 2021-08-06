@@ -4,18 +4,39 @@ const axios = require('axios');
 
 
 async function stockData() {
+    // const apiKey = process.env.ALPHAVANTAGE_API_KEY
+    // const baseUrl = 'https://www.alphavantage.co/query'
+    // const functionType = 'TIME_SERIES_DAILY'
+    // const outputsize = 'compact'
+    // const symbol = 'MSFT'
+
     const apiKey = process.env.ALPHAVANTAGE_API_KEY
     const baseUrl = 'https://www.alphavantage.co/query'
-    const functionType = 'TIME_SERIES_DAILY'
-    const outputsize = 'compact'
+    const functionType = 'TIME_SERIES_WEEKLY_ADJUSTED'
     const symbol = 'MSFT'
 
+    // Intraday API parameters
+    // const apiKey = process.env.ALPHAVANTAGE_API_KEY
+    // const baseUrl = 'https://www.alphavantage.co/query'
+    // const functionType = 'TIME_SERIES_INTRADAY'
+    // const interval = '5min'
+    // const outputsize = 'compact'
+    // const symbol = 'MSFT'
+
+    // Intraday extended APIparameters
+    // const apiKey = process.env.ALPHAVANTAGE_API_KEY
+    // const baseUrl = 'https://www.alphavantage.co/query'
+    // const functionType = 'TIME_SERIES_INTRADAY_EXTENDED'
+    // const interval = '60min'
+    // const outputsize = 'compact'
+    // const adjusted = true
+    // const slice = 'year1month1'
+    // const symbol = 'MSFT'
     try {
       const response = await axios.get(baseUrl, {
         params: {
           function: functionType,
           symbol: symbol,
-          outputsize: outputsize,
           apikey: apiKey,
           datatype: 'json'
         }
