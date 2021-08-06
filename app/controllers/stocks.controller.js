@@ -12,8 +12,13 @@ async function stockData() {
 
     const apiKey = process.env.ALPHAVANTAGE_API_KEY
     const baseUrl = 'https://www.alphavantage.co/query'
-    const functionType = 'TIME_SERIES_WEEKLY_ADJUSTED'
+    const functionType = 'TIME_SERIES_WEEKLY'
     const symbol = 'MSFT'
+    // Weekly API parameters
+    // const apiKey = process.env.ALPHAVANTAGE_API_KEY
+    // const baseUrl = 'https://www.alphavantage.co/query'
+    // const functionType = 'TIME_SERIES_WEEKLY_ADJUSTED'
+    // const symbol = 'MSFT'
 
     // Intraday API parameters
     // const apiKey = process.env.ALPHAVANTAGE_API_KEY
