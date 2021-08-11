@@ -10,11 +10,13 @@ async function stockData() {
     // const outputsize = 'compact'
     // const symbol = 'MSFT'
 
+    // Weekly API parameters
     const apiKey = process.env.ALPHAVANTAGE_API_KEY
     const baseUrl = 'https://www.alphavantage.co/query'
     const functionType = 'TIME_SERIES_WEEKLY'
     const symbol = 'MSFT'
-    // Weekly API parameters
+
+    // Weekly adjusted API parameters
     // const apiKey = process.env.ALPHAVANTAGE_API_KEY
     // const baseUrl = 'https://www.alphavantage.co/query'
     // const functionType = 'TIME_SERIES_WEEKLY_ADJUSTED'
@@ -46,7 +48,10 @@ async function stockData() {
           datatype: 'json'
         }
       })
-
+      
+      let content = response.data();
+      console.log(content);
+      console.log(['Meta Data']);
       return response.data
     } catch (err) {
       console.log(err)
