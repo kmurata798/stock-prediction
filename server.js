@@ -1,10 +1,10 @@
 const express = require("express");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
-const dotenv = require('dotenv');
-dotenv.config()
+require('dotenv').config();
+const axios = require('axios');
 
 var corsOptions = {
   origin: "http://localhost:8081"
@@ -50,8 +50,7 @@ app.get("/", (req, res) => {
 require("./app/routes/company.routes")(app);
 require("./app/routes/stocks.routes")(app);
 
-
-// set port, listen for requests
+// set port, listen for requests (Use environment variable or default 8080 port)
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
