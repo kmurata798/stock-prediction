@@ -13,7 +13,7 @@ export const Button = ({children, type, onClick, buttonStyle, buttonSize}) => {
     const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0] //if the buttonsize already has a size return size if not make it medium button
 
     return (
-        <Link to='/companies' className='btn-mobile'>
+        <Link to='/stocks' className='btn-mobile'>
             <button className={`btn ${checkButtonStyle} ${checkButtonSize}`} onClick={onClick} type={type}>
                 {children}
             </button>

@@ -3,7 +3,7 @@ import '../App.css';
 import { Button } from './Button';
 import './HeroSection.css';
 import { StockButton } from './StockButton';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 
 function HeroSection() {
