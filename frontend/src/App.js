@@ -9,6 +9,7 @@ import CompaniesList from "./components/companies-list.component";
 // import StocksSingle from "./components/stocks-single.component";
 import StocksApi from "./components/stocks-api.component";
 import StockData from './components/Pages/StockData';
+import './App.css';
 
 class App extends Component {
   render() {
@@ -22,7 +23,7 @@ class App extends Component {
           <Route exact path="/add" component={AddCompany} />
           <Route path="/companies/:id" component={Company} />
           <Route path="/stocks" component={StocksApi} />
-          <Route path="/stocksdata" component={StockData} />
+          <Route path="/stockdata" component={StockData} />
         </Switch>
         </Router>
       </React.Fragment>

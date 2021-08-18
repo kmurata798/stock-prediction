@@ -1,8 +1,9 @@
 import http from "../http-common";
 
 class StocksDataService {
-    getHistory() {
-      return http.get("/history");
+    getStocks(values) {
+      console.log(values)
+      return http.get("/stocks/history", {params: values} );
     }
 
 }

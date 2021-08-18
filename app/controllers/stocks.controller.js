@@ -10,6 +10,7 @@ async function getStockData(fType, outSize, sym, interv) {
   const outputsize = outSize || 'compact'
   const symbol = sym || 'MSFT'
   const interval = interv || '15min'
+  const datatype = 'json'
 
   try {
       const response = await axios.get(baseUrl, {

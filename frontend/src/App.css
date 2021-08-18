@@ -5,7 +5,7 @@
   font-family: 'PT Sans', sans-serif;
 }
 
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -18,16 +18,16 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
-.stockform {
+/* .stockform {
   display: flex;
   flex-direction: column;
-}
+} */
 
-.App-link {
+/* .App-link {
   color: #61dafb;
-}
+} */
 
 .home,
 .services,
@@ -87,11 +87,11 @@
   color: blueviolet;
 }
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */

@@ -1,6 +1,8 @@
 // frontend react component
 import React, {useState} from "react";
+import StocksDataService from "../services/stocks.service";
 import axios from "axios";
+
 
 function StocksForm() {
 
@@ -16,10 +18,11 @@ function StocksForm() {
     event.preventDefault();
     console.log(values)
 
-    const res = await axios.get('stonks', { params: values })
+    const res = await StocksDataService.getStocks(values)
+    // const res = await axios.get('stocks/history', { params: values })
     // console.log(res.data)
     setData(res.data)
-    console.log(data)
+    // console.log(data)
   }
 
   const handleFunctionChange = (event) => {
@@ -53,8 +56,8 @@ function StocksForm() {
   return (
     <div className ="App-header">
       <form className="stockform" onSubmit={onSubmit}>
-        <label htmlFor="Function">Name</label>
-        <input id="Function" name="Function" type="text" value={values.name} onChange={handleFunctionChange}></input>
+        <label htmlFor="Function">Function</label>
+        <input id="Function" name="Function" type="text" value={values.function} onChange={handleFunctionChange}></input>
         <label htmlFor="Symbol">Symbol</label>
         <input id="Symbol" name="Symbol" value={values.symbol} onChange={handleSymbolChange}></input>
         <label htmlFor="Interval">Interval</label>
