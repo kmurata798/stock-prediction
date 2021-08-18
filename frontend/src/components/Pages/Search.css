@@ -1,0 +1,16 @@
+
+  .Api {
+    background-color: #f1794d;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: rgb(245, 243, 243);
+  }
+  .button{
+    padding: 7px;
+    color:green
+
+  }
