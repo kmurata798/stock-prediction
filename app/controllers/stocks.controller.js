@@ -1,7 +1,10 @@
 require('dotenv').config();
 const axios = require('axios');
 // let url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=88724DTSJ93YB5VN'
-
+// Give this file access to the models
+const db = require("../models");
+// Set the 'stocks' collection to a variable
+const Stocks = db.stocks;
 
 async function getStockData(fType, outSize, sym, interv) {
   const apiKey = process.env.ALPHAVANTAGE_API_KEY
@@ -24,6 +27,22 @@ async function getStockData(fType, outSize, sym, interv) {
           }
       })
 
+      const stockSchema = new Stocks({
+        name: response.data.symbol,
+        
+      })
+
+      stockSchema
+          .save(stockSchema)
+          .then(data => {
+            res.send(data);
+          })
+          .catch(err => {
+            res.status(500).send({
+              message:
+                err.message || "Some error occurred while creating the Company."
+            });
+          });
       return response.data
   } catch (err) {
       console.log(err)
@@ -38,3 +57,31 @@ exports.stockData = async (req, res) => {
     console.log(stonks)
     res.send(stonks)
 };
+
+// Create and Save a new Stock entry
+exports.create = (req, res) => {
+  // Validate request
+  if (!req.body.name) {
+    res.status(400).send({ message: "Content can not be empty!" });
+    return;
+  }
+
+  // Create a Company
+  const stocks = new Stocks({
+    name: req.body.name,
+    rating: req.body.rating,
+    chosen: req.body.chosen ? req.body.chosen : false
+  });
+
+  stocks
+      .save(stocks)
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while creating the Company."
+        });
+      });
+}

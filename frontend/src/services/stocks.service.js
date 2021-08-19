@@ -5,6 +5,10 @@ class StocksDataService {
       console.log(values)
       return http.get("/stocks/history", {params: values} );
     }
+    create(values) {
+      console.log(values)
+      return http.get("/stocks/create", {params: values} );
+    }
 
 }
 
