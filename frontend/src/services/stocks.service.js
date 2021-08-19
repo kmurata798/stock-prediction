@@ -7,7 +7,7 @@ class StocksDataService {
     }
     create(values) {
       console.log(values)
-      return http.get("/stocks/create", {params: values} );
+      return http.post("/stocks/create", {params: values} );
     }
 
 }

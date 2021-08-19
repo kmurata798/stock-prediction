@@ -26,24 +26,7 @@ async function getStockData(fType, outSize, sym, interv) {
               datatype: 'json'
           }
       })
-
-      const stockSchema = new Stocks({
-        name: response.data.symbol,
-        
-      })
-
-      stockSchema
-          .save(stockSchema)
-          .then(data => {
-            res.send(data);
-          })
-          .catch(err => {
-            res.status(500).send({
-              message:
-                err.message || "Some error occurred while creating the Company."
-            });
-          });
-      return response.data
+      return response
   } catch (err) {
       console.log(err)
   }
@@ -54,8 +37,27 @@ exports.stockData = async (req, res) => {
     const { functionType, outputsize, symbol, interval } = req.query
     console.log(req.query)
     const stonks = await getStockData(functionType, outputsize, symbol, interval)
-    console.log(stonks)
-    res.send(stonks)
+    const stockSchema = new Stocks({
+      name: symbol,
+    })
+
+    if (stonks.status == 200) {
+        stockSchema
+            .save(stockSchema)
+            .then(data => {
+              res.send(stonks.data);
+            })
+            .catch(err => {
+              res.status(500).send({
+                message:
+                  err.message || "Some error occurred while creating the Company."
+              });
+            });
+      console.log(stonks)
+    } else {
+      res.send('not valid symbol')
+    }
+
 };
 
 // Create and Save a new Stock entry
