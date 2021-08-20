@@ -26,6 +26,7 @@ async function getStockData(fType, outSize, sym, interv) {
               datatype: 'json'
           }
       })
+      // change this to response to have access to the response.status in the if condition below
       return response
   } catch (err) {
       console.log(err)
@@ -37,12 +38,21 @@ exports.stockData = async (req, res) => {
     const { functionType, outputsize, symbol, interval } = req.query
     console.log(req.query)
     const stonks = await getStockData(functionType, outputsize, symbol, interval)
-    const stockSchema = new Stocks({
-      name: symbol,
-    })
-
+    // const dataMap = processData(stonks);
+    
+    
     if (stonks.status == 200) {
-        stockSchema
+      const stockSchema = new Stocks({
+        name: symbol,
+        type: functionType,
+        data: JSON.stringify(stonks.data)
+        // open: stonks.data["Weekly Time Series"]["1. open"],
+        // high: stonks.data["Weekly Time Series"]["2. high"],
+        // low: stonks.data["Weekly Time Series"]["3. low"],
+        // close: stonks.data["Weekly Time Series"]["4. close"]
+      })
+
+      stockSchema
             .save(stockSchema)
             .then(data => {
               res.send(stonks.data);
@@ -53,7 +63,8 @@ exports.stockData = async (req, res) => {
                   err.message || "Some error occurred while creating the Company."
               });
             });
-      console.log(stonks)
+      // console.log(stonks)
+      // console.log("weird")
     } else {
       res.send('not valid symbol')
     }
@@ -87,3 +98,7 @@ exports.create = (req, res) => {
         });
       });
 }
+
+// async function processData(data, ) {
+//   const valsByProp = stonks.data["Weekly Time Series"].map(item => { // do this })
+// }

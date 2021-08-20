@@ -1,16 +1,13 @@
 module.exports = mongoose => {
-    // const Stocks = mongoose.model(
-    //     "stocks",
-    //     mongoose.Schema(
-    //     {
-    //         name: String
-    //     },
-    //     { timestamps: true }
-    //     )
-    // );
     var schema = mongoose.Schema(
         {
           name: String,
+          data: String
+        //   date: String,
+        //   open: String,
+        //   high: String,
+        //   low: String,
+        //   close: String
         },
         { timestamps: true }
       );
