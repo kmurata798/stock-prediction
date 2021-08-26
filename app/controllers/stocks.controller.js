@@ -99,6 +99,9 @@ exports.create = (req, res) => {
       });
 }
 
+exports.predict = (req, res) => {
+    const stonks = await getStockData(functionType, outputsize, symbol, interval)
+}
 // async function processData(data, ) {
 //   const valsByProp = stonks.data["Weekly Time Series"].map(item => { // do this })
 // }
