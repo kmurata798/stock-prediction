@@ -18,7 +18,9 @@ function StocksForm() {
     event.preventDefault();
     console.log(values)
 
-    const res = await StocksDataService.getStocks(values)
+    // const res = await StocksDataService.getStocks(values)
+    const res = await StocksDataService.predict(values)
+
     // const res = await axios.get('stocks/history', { params: values })
     // console.log(res.data)
     setData(res.data)

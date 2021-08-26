@@ -13,7 +13,7 @@ async function getStockData(fType, outSize, sym, interv) {
   const outputsize = outSize || 'compact'
   const symbol = sym || 'MSFT'
   const interval = interv || '15min'
-  const datatype = 'json'
+  // const datatype = 'json'
 
   try {
       const response = await axios.get(baseUrl, {
@@ -70,6 +70,23 @@ exports.stockData = async (req, res) => {
     }
 
 };
+// THIS FUNCTION vvvvvvvvv
+exports.predict = (req, res) => {
+  const { functionType, outputsize, symbol, interval } = req.query
+  console.log(req.query)
+  console.log("before getStockData")
+  const stonks = getStockData(functionType, outputsize, symbol, interval)
+
+  console.log(JSON.stringify(stonks.data))
+  if (stonks.status == 200) {
+    let data = JSON.stringify(stonks.data);
+    console.log(hi)
+    res.send(data)
+  } else {
+    console.log("no why")
+    res.send('not valid symbol')
+  }
+}
 
 // Create and Save a new Stock entry
 exports.create = (req, res) => {
@@ -99,9 +116,7 @@ exports.create = (req, res) => {
       });
 }
 
-exports.predict = (req, res) => {
-    const stonks = await getStockData(functionType, outputsize, symbol, interval)
-}
+
 // async function processData(data, ) {
 //   const valsByProp = stonks.data["Weekly Time Series"].map(item => { // do this })
 // }

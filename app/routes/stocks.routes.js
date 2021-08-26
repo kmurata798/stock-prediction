@@ -4,6 +4,8 @@ module.exports = app => {
 
     router.get("/history", stocks.stockData);
 
+    router.get("/predict", stocks.predict);
+
     router.post("/create", stocks.create);
 
     app.use("/api/stocks", router);
